@@ -1,0 +1,182 @@
+/* ===========================
+   TESTIMONIALS — Data/Tech Boosted + Responsive
+   =========================== */
+
+/* Variables (mueve a variables.css si ya tienes uno global) */
+:root {
+  --bg: #0F172A;
+  --bg-2: #020617;
+  --surface: #1E293B;
+  --text: #E5E7EB;
+  --muted: #94A3B8;
+  --muted-2: #9CA3AF;
+  --primary: #0B3C5D;   /* Azul profundo */
+  --secondary: #1ECBE1; /* Cian eléctrico */
+  --accent: #2ECC71;    /* Verde data */
+  --ring: #1ECBE1;
+
+  --container: 1120px;
+  --radius: 16px;
+  --radius-sm: 12px;
+
+  --fz-title: clamp(1.6rem, 1.2vw + 1.2rem, 2rem);
+  --fz-card: clamp(0.98rem, 0.45vw + 0.92rem, 1.05rem);
+  --fz-author: clamp(0.95rem, 0.35vw + 0.9rem, 1.02rem);
+  --fz-cta: clamp(1rem, 0.4vw + 0.95rem, 1.06rem);
+
+  --gap-xl: clamp(2rem, 5vw, 3rem);
+  --gap-lg: clamp(1.25rem, 3vw, 2rem);
+  --gap-md: clamp(0.75rem, 2vw, 1.25rem);
+  --gap-sm: clamp(0.5rem, 1.5vw, 0.9rem);
+
+  --shadow-sm: 0 8px 24px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 12px 36px rgba(0, 0, 0, 0.35);
+}
+
+/* Sección base */
+.testimonials {
+  color: var(--text);
+  padding: clamp(3rem, 6vw, 5rem) 1rem;
+  background:
+    radial-gradient(900px 360px at 15% -10%, rgba(30, 203, 225, 0.08), transparent 60%),
+    radial-gradient(820px 320px at 85% 120%, rgba(11, 60, 93, 0.08), transparent 60%),
+    linear-gradient(180deg, rgba(2, 6, 23, 0.00), rgba(2, 6, 23, 0.25) 30%, rgba(2, 6, 23, 0.4));
+}
+
+.testimonials .container {
+  width: min(100% - 2rem, var(--container));
+  margin-inline: auto;
+  display: grid;
+  gap: var(--gap-xl);
+  text-align: center;
+}
+
+/* Título */
+.testimonials h2 {
+  font-size: var(--fz-title);
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  text-wrap: balance;
+  position: relative;
+  display: inline-block;
+  margin-inline: auto;
+}
+
+.testimonials h2::after {
+  content: "";
+  display: block;
+  height: 3px;
+  width: 88px;
+  margin: 0.65rem auto 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--secondary), #0EA5E9);
+  opacity: 0.9;
+}
+
+/* Grid de tarjetas */
+.testimonials .grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(240px, 1fr));
+  gap: var(--gap-lg);
+}
+
+/* Card base */
+.testimonials .card {
+  text-align: left;
+  display: grid;
+  gap: 0.75rem;
+
+  background: color-mix(in oklab, var(--bg) 84%, transparent);
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  border-radius: var(--radius);
+  padding: 1.2rem 1.3rem;
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease;
+  position: relative;
+  isolation: isolate;
+}
+
+/* Acento superior */
+.testimonials .card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--secondary), #0EA5E9);
+  border-top-left-radius: var(--radius);
+  border-top-right-radius: var(--radius);
+  opacity: 0.9;
+}
+
+/* Cita */
+.testimonials .card p {
+  font-size: var(--fz-card);
+  color: var(--text);
+  line-height: 1.7;
+  quotes: "“" "”" "‘" "’";
+}
+.testimonials .card p::before { content: open-quote; color: var(--secondary); margin-right: 2px; }
+.testimonials .card p::after  { content: close-quote; color: var(--secondary); margin-left: 2px; }
+
+/* Autor */
+.testimonials .card h4 {
+  font-size: var(--fz-author);
+  color: var(--muted);
+  font-weight: 700;
+  margin-top: 0.2rem;
+}
+
+/* Hover/focus */
+.testimonials .card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(30, 203, 225, 0.28);
+  background: color-mix(in oklab, var(--bg) 88%, transparent);
+  box-shadow: var(--shadow-md);
+}
+.testimonials .card:focus-within {
+  outline: 2px solid transparent;
+  box-shadow:
+    0 0 0 3px rgba(2, 6, 23, 0.7),
+    0 0 0 6px var(--ring);
+}
+
+/* CTA inferior */
+.testimonial-cta {
+  font-size: var(--fz-cta);
+  color: var(--muted-2);
+  max-width: 70ch;
+  margin-inline: auto;
+  line-height: 1.65;
+}
+.testimonial-cta strong {
+  color: var(--text);
+  font-weight: 800;
+  border-bottom: 2px solid color-mix(in oklab, var(--secondary) 65%, #0EA5E9 35%);
+  padding-bottom: 1px;
+}
+
+/* Responsivo */
+@media (max-width: 1200px) {
+  .testimonials .grid {
+    grid-template-columns: repeat(2, minmax(240px, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .testimonials {
+    padding: clamp(2.25rem, 7vw, 3rem) 1rem;
+  }
+  .testimonials .grid {
+    grid-template-columns: 1fr;
+    gap: var(--gap-md);
+  }
+}
+
+/* Accesibilidad / reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}

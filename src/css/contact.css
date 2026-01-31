@@ -1,0 +1,225 @@
+/* ===========================
+   CONTACT — Data/Tech Boosted + Responsive
+   =========================== */
+
+/* Variables (mueve a variables.css si ya tienes uno global) */
+:root {
+  --bg: #0F172A;
+  --bg-2: #020617;
+  --surface: #1E293B;
+  --text: #E5E7EB;
+  --muted: #94A3B8;
+  --muted-2: #9CA3AF;
+  --primary: #0B3C5D;      /* Azul profundo */
+  --secondary: #1ECBE1;    /* Cian eléctrico */
+  --accent: #2ECC71;       /* Verde data */
+  --ring: #1ECBE1;
+
+  --container: 1120px;
+  --radius: 16px;
+  --radius-pill: 999px;
+  --shadow-sm: 0 6px 18px rgba(0, 0, 0, 0.28);
+  --shadow-md: 0 12px 36px rgba(0, 0, 0, 0.35);
+
+  --fz-h2: clamp(1.6rem, 1.5vw + 1rem, 2rem);
+  --fz-p: clamp(1rem, 0.4vw + 0.95rem, 1.05rem);
+
+  --gap-lg: clamp(1.25rem, 3vw, 2rem);
+  --gap-md: clamp(0.75rem, 2vw, 1.25rem);
+  --gap-sm: clamp(0.5rem, 1.5vw, 0.9rem);
+}
+
+/* Sección base */
+.contact-section {
+  width: min(100% - 2rem, var(--container));
+  margin-inline: auto;
+  padding: clamp(3rem, 6vw, 4rem) 0;
+  display: grid;
+  gap: var(--gap-lg);
+  justify-items: center;
+  text-align: center;
+  background:
+    radial-gradient(700px 280px at 80% -10%, rgba(30, 203, 225, 0.10), transparent 60%),
+    radial-gradient(600px 240px at 10% 120%, rgba(11, 60, 93, 0.10), transparent 60%);
+  color: var(--text);
+}
+
+/* Título y descripción */
+.contact-section h2 {
+  font-size: var(--fz-h2);
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
+
+.contact-section p {
+  font-size: var(--fz-p);
+  color: var(--muted);
+  max-width: 60ch;
+}
+
+/* Contenedor de botones */
+.contact-buttons {
+  display: grid;
+  grid-auto-flow: column;
+  gap: var(--gap-md);
+  align-items: center;
+}
+
+/* Botones base */
+.contact-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.85rem 1.4rem;
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  backdrop-filter: blur(6px);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
+  box-shadow: var(--shadow-sm);
+  outline: none;
+}
+
+/* Iconos */
+.contact-btn .icon {
+  font-size: 1.1rem; /* react-icons escala por font-size */
+  transform: translateY(1px);
+}
+
+/* WhatsApp: verde con buen contraste en dark */
+.whatsapp-btn {
+  background: linear-gradient(135deg, #25D366, #1DAE53);
+  color: #04140b;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+}
+.whatsapp-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md), 0 0 0 2px rgba(4, 20, 11, 0.2) inset;
+}
+.whatsapp-btn:focus-visible {
+  outline: 2px solid transparent;
+  box-shadow:
+    0 0 0 3px rgba(4, 20, 11, 0.7),
+    0 0 0 6px rgba(37, 211, 102, 0.55);
+}
+
+/* Email: borde cian, fondo sutil */
+.email-btn {
+  background: rgba(2, 6, 23, 0.35);
+  border: 1px solid #334155;
+  color: var(--text);
+}
+.email-btn:hover {
+  transform: translateY(-2px);
+  background: rgba(30, 203, 225, 0.08);
+  border-color: color-mix(in oklab, var(--secondary) 40%, #334155 60%);
+  box-shadow: var(--shadow-md);
+}
+.email-btn:focus-visible {
+  outline: 2px solid transparent;
+  box-shadow:
+    0 0 0 3px rgba(2, 6, 23, 0.7),
+    0 0 0 6px var(--ring);
+}
+/* ===========================
+   CONTACT — Responsive Completo
+   =========================== */
+
+/* ---------- Tablets grandes (1024px - 768px) ---------- */
+@media (max-width: 1024px) {
+  .contact-section {
+    padding: clamp(2.5rem, 5vw, 3.5rem) 0;
+    gap: var(--gap-md);
+  }
+
+  .contact-section h2 {
+    font-size: clamp(1.5rem, 1.5vw + 1rem, 1.8rem);
+  }
+
+  .contact-section p {
+    font-size: clamp(0.95rem, 0.8vw + 0.9rem, 1rem);
+    max-width: 50ch;
+  }
+
+  .contact-buttons {
+    grid-auto-flow: row; /* Botones en columna */
+    gap: var(--gap-sm);
+  }
+
+  .contact-btn {
+    width: auto;
+    justify-content: center;
+    padding: 0.75rem 1.2rem;
+  }
+}
+
+/* ---------- Tablets pequeñas / móviles grandes (767px - 480px) ---------- */
+@media (max-width: 767px) {
+  .contact-section {
+    padding: clamp(2rem, 5vw, 3rem) 0;
+  }
+
+  .contact-section h2 {
+    font-size: clamp(1.4rem, 4vw + 0.9rem, 1.6rem);
+  }
+
+  .contact-section p {
+    font-size: clamp(0.9rem, 3.5vw + 0.85rem, 0.95rem);
+    max-width: 45ch;
+  }
+
+  .contact-buttons {
+    grid-auto-flow: row;
+    gap: var(--gap-sm);
+    width: 100%;
+    justify-items: center;
+  }
+
+  .contact-btn {
+    width: 100%; /* Botones a toda la fila */
+    padding: 0.7rem 0;
+    font-size: clamp(0.85rem, 3vw + 0.8rem, 0.9rem);
+  }
+
+  .contact-btn .icon {
+    font-size: 1rem;
+  }
+}
+
+/* ---------- Móviles pequeños (<480px) ---------- */
+@media (max-width: 480px) {
+  .contact-section {
+    padding: 1.8rem 0;
+    gap: var(--gap-sm);
+  }
+
+  .contact-section h2 {
+    font-size: clamp(1.2rem, 4.5vw + 0.8rem, 1.4rem);
+  }
+
+  .contact-section p {
+    font-size: clamp(0.85rem, 4vw + 0.8rem, 0.9rem);
+    max-width: 40ch;
+  }
+
+  .contact-buttons {
+    gap: var(--gap-sm);
+  }
+
+  .contact-btn {
+    width: 100%;
+    padding: 0.65rem 0;
+    font-size: clamp(0.8rem, 3.5vw + 0.8rem, 0.85rem);
+  }
+
+  .contact-btn .icon {
+    font-size: 0.95rem;
+  }
+}

@@ -1,0 +1,246 @@
+/* ===========================
+   STACK — Data/Tech Boosted + Responsive
+   =========================== */
+
+/* Variables (mueve a variables.css si ya tienes uno global) */
+:root {
+  --bg: #0F172A;
+  --bg-2: #020617;
+  --surface: #1E293B;
+  --text: #E5E7EB;
+  --muted: #94A3B8;
+  --primary: #0B3C5D;     /* Azul profundo */
+  --secondary: #1ECBE1;   /* Cian eléctrico */
+  --accent: #2ECC71;      /* Verde data */
+  --ring: #1ECBE1;
+
+  --container: 1120px;
+  --radius: 16px;
+  --radius-pill: 999px;
+
+  --fz-title: clamp(1.6rem, 1.2vw + 1.2rem, 2rem);
+  --fz-item: clamp(0.95rem, 0.45vw + 0.9rem, 1.05rem);
+
+  --gap-xl: clamp(2rem, 5vw, 3rem);
+  --gap-lg: clamp(1.25rem, 3vw, 2rem);
+  --gap-md: clamp(0.75rem, 2vw, 1.25rem);
+  --gap-sm: clamp(0.5rem, 1.5vw, 0.9rem);
+
+  --shadow-sm: 0 8px 24px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 12px 36px rgba(0, 0, 0, 0.35);
+}
+
+/* Sección base */
+.stack {
+  color: var(--text);
+  padding: clamp(3rem, 6vw, 5rem) 1rem;
+  background:
+    radial-gradient(900px 360px at 20% -10%, rgba(30, 203, 225, 0.08), transparent 60%),
+    radial-gradient(820px 320px at 80% 120%, rgba(11, 60, 93, 0.08), transparent 60%),
+    linear-gradient(180deg, rgba(2, 6, 23, 0.00), rgba(2, 6, 23, 0.25) 30%, rgba(2, 6, 23, 0.4));
+}
+
+.stack .container {
+  width: min(100% - 2rem, var(--container));
+  margin-inline: auto;
+  display: grid;
+  gap: var(--gap-xl);
+  text-align: center;
+}
+
+/* Título */
+.stack-title {
+  font-size: var(--fz-title);
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  text-wrap: balance;
+  margin-bottom: -0.4rem;
+  position: relative;
+  display: inline-block;
+  margin-inline: auto;
+}
+
+.stack-title::after {
+  content: "";
+  display: block;
+  height: 3px;
+  width: 72px;
+  margin: 0.6rem auto 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--secondary), #0EA5E9);
+  opacity: 0.9;
+}
+
+/* Grid de tecnologías (badges) */
+.stack-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  display: grid;
+  grid-template-columns: repeat(5, minmax(140px, 1fr));
+  gap: var(--gap-md);
+  align-items: stretch;
+}
+
+/* Badge base */
+.stack-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius);
+  background: color-mix(in oklab, var(--bg) 82%, transparent);
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  box-shadow: var(--shadow-sm);
+
+  font-size: var(--fz-item);
+  font-weight: 700;
+  color: var(--text);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease,
+    color 0.25s ease;
+}
+
+/* Hover / focus */
+.stack-item:hover {
+  transform: translateY(-2px);
+  background: color-mix(in oklab, var(--bg) 88%, transparent);
+  border-color: rgba(30, 203, 225, 0.28);
+  box-shadow: var(--shadow-md);
+}
+
+.stack-item:focus-visible {
+  outline: 2px solid transparent;
+  box-shadow:
+    0 0 0 3px rgba(2, 6, 23, 0.7),
+    0 0 0 6px var(--ring);
+}
+
+/* Glow sutil opcional en hover para diferenciar categorías */
+.stack-item::before {
+  content: "";
+  position: absolute;
+  inset: auto 0 -8px 0;
+  height: 10px;
+  border-radius: 999px;
+  opacity: 0;
+  filter: blur(10px);
+  transition: opacity 0.25s ease;
+}
+.stack-item:hover::before { opacity: 0.6; }
+
+/* --------- Colores por tecnología (clases generadas en React) --------- */
+/* Nota: las clases vienen de `stack-${tech.toLowerCase().replace(/\s+/g, '-')}` */
+
+.stack-html       { --badge: #E34F26; }
+.stack-css        { --badge: #1572B6; }
+.stack-javascript { --badge: #F7DF1E; color: #61DAFB; } /* amarillo, texto gris oscuro para contraste */
+.stack-react      { --badge: #61DAFB; color: #61DAFB; } /* celeste, texto negro */
+.stack-python     { --badge: #3776AB; }
+.stack-java       { --badge: #EA2D2E; }
+.stack-sql        { --badge: #22C55E; }
+.stack-nosql      { --badge: #8B5CF6; }
+.stack-power-bi   { --badge: #F2C811; color: #61DAFB; } /* dorado, texto gris oscuro */
+
+.stack-item {
+  position: relative;
+  /* Línea superior con el color de la tecnología */
+}
+.stack-item::after {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--badge, var(--secondary)), color-mix(in oklab, var(--badge, var(--secondary)) 60%, #0EA5E9 40%));
+  border-top-left-radius: var(--radius);
+  border-top-right-radius: var(--radius);
+  opacity: 0.95;
+  pointer-events: none;
+}
+
+
+
+/* Preferencias del usuario: reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+
+/* Badge pill (opcional): si quieres estilo cápsula en móvil */
+@media (max-width: 600px) {
+  .stack-item {
+    border-radius: var(--radius-pill);
+  }
+}
+/* ===========================
+   STACK — Responsive Completo
+   =========================== */
+
+/* Móviles pequeños: 1 columna, badges tipo pill */
+@media (max-width: 480px) {
+  .stack-grid {
+    grid-template-columns: 1fr;
+    gap: var(--gap-sm);
+  }
+  .stack-item {
+    font-size: 0.9rem;
+    padding: 0.65rem 0.9rem;
+    border-radius: var(--radius-pill);
+  }
+}
+
+/* Móviles medianos / tablets verticales: 2 columnas */
+@media (min-width: 481px) and (max-width: 768px) {
+  .stack-grid {
+    grid-template-columns: repeat(2, minmax(140px, 1fr));
+    gap: var(--gap-md);
+  }
+  .stack-item {
+    font-size: 0.95rem;
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* Tablets horizontales / laptops pequeños: 3 columnas */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .stack-grid {
+    grid-template-columns: repeat(3, minmax(140px, 1fr));
+    gap: var(--gap-md);
+  }
+  .stack-item {
+    font-size: var(--fz-item);
+    padding: 0.8rem 1rem;
+  }
+}
+
+/* Desktop medianos: 4 columnas */
+@media (min-width: 1025px) and (max-width: 1366px) {
+  .stack-grid {
+    grid-template-columns: repeat(4, minmax(140px, 1fr));
+    gap: var(--gap-lg);
+  }
+}
+
+/* Desktop grandes: 5 columnas (base original) */
+@media (min-width: 1367px) {
+  .stack-grid {
+    grid-template-columns: repeat(5, minmax(140px, 1fr));
+    gap: var(--gap-xl);
+  }
+}
+
+/* Ajuste de container y padding en móviles */
+@media (max-width: 768px) {
+  .stack {
+    padding: clamp(2rem, 5vw, 3rem) 1rem;
+  }
+  .stack .container {
+    gap: var(--gap-lg);
+  }
+}

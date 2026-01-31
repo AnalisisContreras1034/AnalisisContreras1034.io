@@ -1,0 +1,224 @@
+/* ===========================
+   SERVICES — Data/Tech Boosted + Responsive
+   =========================== */
+
+/* Variables (mueve a variables.css si ya tienes uno global) */
+:root {
+  --bg: #0F172A;
+  --bg-2: #020617;
+  --surface: #1E293B;
+  --text: #E5E7EB;
+  --muted: #94A3B8;
+  --muted-2: #9CA3AF;
+  --primary: #0B3C5D;    /* Azul profundo */
+  --secondary: #1ECBE1;  /* Cian eléctrico */
+  --accent: #2ECC71;     /* Verde data */
+  --ring: #1ECBE1;
+
+  --container: 1120px;
+  --radius: 16px;
+  --radius-sm: 12px;
+
+  --fz-title: clamp(1.6rem, 1.2vw + 1.2rem, 2rem);
+  --fz-sub: clamp(1rem, 0.6vw + 0.95rem, 1.1rem);
+  --fz-card-title: clamp(1.05rem, 0.6vw + 1rem, 1.25rem);
+  --fz-card-text: clamp(0.96rem, 0.4vw + 0.92rem, 1.05rem);
+
+  --gap-xl: clamp(2rem, 5vw, 3rem);
+  --gap-lg: clamp(1.25rem, 3vw, 2rem);
+  --gap-md: clamp(0.75rem, 2vw, 1.25rem);
+  --gap-sm: clamp(0.5rem, 1.5vw, 0.9rem);
+
+  --shadow-sm: 0 8px 22px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 12px 36px rgba(0, 0, 0, 0.35);
+}
+
+/* Sección base */
+.services {
+  color: var(--text);
+  background:
+    radial-gradient(900px 360px at 85% -10%, rgba(30, 203, 225, 0.08), transparent 60%),
+    radial-gradient(800px 320px at 15% 110%, rgba(11, 60, 93, 0.08), transparent 60%),
+    linear-gradient(180deg, rgba(2, 6, 23, 0.00), rgba(2, 6, 23, 0.25) 30%, rgba(2, 6, 23, 0.4));
+  padding: clamp(3rem, 6vw, 5rem) 1rem;
+}
+
+.services .container {
+  width: min(100% - 2rem, var(--container));
+  margin-inline: auto;
+  display: grid;
+  gap: var(--gap-xl);
+  text-align: center;
+}
+
+/* Título y subtítulo */
+.services-title {
+  font-size: var(--fz-title);
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  text-wrap: balance;
+}
+
+.services-subtitle {
+  font-size: var(--fz-sub);
+  color: var(--muted);
+  max-width: 68ch;
+  margin-inline: auto;
+  line-height: 1.65;
+  background: linear-gradient(180deg, rgba(30, 41, 59, 0.28), rgba(2, 6, 23, 0.18));
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  padding: 1rem 1.1rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(4px);
+}
+
+/* Grid de servicios */
+.services-grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(220px, 1fr));
+  gap: var(--gap-lg);
+  padding: 0;
+  margin: 0;
+}
+
+/* Card base */
+.service-card {
+  position: relative;
+  text-align: left;
+  display: grid;
+  gap: 0.5rem;
+  background: color-mix(in oklab, var(--bg) 84%, transparent);
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  border-radius: var(--radius);
+  padding: 1.1rem 1.2rem 1.15rem;
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease;
+  isolation: isolate; /* para pseudo-elementos */
+}
+
+/* Detalle decorativo (borde superior con cian) */
+.service-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--secondary), #0EA5E9);
+  border-top-left-radius: var(--radius);
+  border-top-right-radius: var(--radius);
+  opacity: 0.85;
+}
+
+/* Hover state */
+.service-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(30, 203, 225, 0.28);
+  background: color-mix(in oklab, var(--bg) 88%, transparent);
+  box-shadow: var(--shadow-md);
+}
+
+/* Focus state (accesibilidad) */
+.service-card:focus-within {
+  outline: 2px solid transparent;
+  box-shadow:
+    0 0 0 3px rgba(2, 6, 23, 0.7),
+    0 0 0 6px var(--ring);
+}
+
+/* Tipografía de la card */
+.service-title {
+  font-size: var(--fz-card-title);
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  color: var(--text);
+}
+
+.service-description {
+  font-size: var(--fz-card-text);
+  color: var(--muted);
+  line-height: 1.65;
+  max-width: 56ch;
+}
+
+/* Variante sutil “pro” para la primera card (Análisis de Datos) opcional */
+.services-grid .service-card:first-child {
+  background:
+    radial-gradient(420px 160px at 15% -30%, rgba(30, 203, 225, 0.10), transparent 60%),
+    color-mix(in oklab, var(--bg) 84%, transparent);
+}
+
+/* ===========================
+   SERVICES — Responsive
+   =========================== */
+
+/* ------------------- Grid adaptable ------------------- */
+@media (max-width: 1200px) {
+  .services-grid {
+    grid-template-columns: repeat(3, minmax(220px, 1fr));
+  }
+}
+
+@media (max-width: 992px) {
+  .services-grid {
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
+    gap: var(--gap-md);
+  }
+}
+
+@media (max-width: 640px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: var(--gap-md);
+  }
+  
+  .service-card {
+    text-align: center; /* Centrar en móvil para mejor legibilidad */
+    padding: 1rem 1rem 1.1rem;
+  }
+
+  .service-description {
+    max-width: 100%;
+  }
+}
+
+/* ------------------- Contenedor y texto ------------------- */
+@media (max-width: 768px) {
+  .services .container {
+    gap: var(--gap-lg);
+    text-align: center;
+  }
+
+  .services-title {
+    font-size: clamp(1.5rem, 4vw + 1rem, 1.8rem);
+  }
+
+  .services-subtitle {
+    font-size: clamp(0.95rem, 3vw + 0.9rem, 1rem);
+    padding: 0.8rem 1rem;
+  }
+}
+
+/* ------------------- Card hover adaptado móvil ------------------- */
+@media (hover: none) {
+  .service-card:hover {
+    transform: none;
+    box-shadow: var(--shadow-sm);
+    border-color: rgba(148, 163, 184, 0.14);
+  }
+}
+
+/* ------------------- Ajuste de gaps y padding general ------------------- */
+@media (max-width: 480px) {
+  .services {
+    padding: clamp(2rem, 6vw, 3rem) 1rem;
+  }
+
+  .service-card {
+    padding: 0.9rem 1rem 1rem;
+  }
+}

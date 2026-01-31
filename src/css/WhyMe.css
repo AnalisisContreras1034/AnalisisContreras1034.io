@@ -1,0 +1,262 @@
+/* ===========================
+   WHY ME — Data/Tech Boosted + Responsive
+   =========================== */
+
+/* Variables (mueve a variables.css si ya tienes uno global) */
+:root {
+  --bg: #0F172A;
+  --bg-2: #020617;
+  --surface: #1E293B;
+  --surface-2: #111827;
+  --text: #E5E7EB;
+  --muted: #94A3B8;
+  --muted-2: #9CA3AF;
+  --primary: #0B3C5D;    /* Azul profundo */
+  --secondary: #1ECBE1;  /* Cian eléctrico */
+  --accent: #2ECC71;     /* Verde data */
+  --ring: #1ECBE1;
+
+  --container: 1120px;
+  --radius: 16px;
+  --radius-sm: 12px;
+
+  --fz-title: clamp(1.6rem, 1.2vw + 1.2rem, 2rem);
+  --fz-sub: clamp(1rem, 0.6vw + 0.95rem, 1.1rem);
+  --fz-item: clamp(0.98rem, 0.5vw + 0.92rem, 1.05rem);
+
+  --gap-xl: clamp(2rem, 5vw, 3rem);
+  --gap-lg: clamp(1.25rem, 3vw, 2rem);
+  --gap-md: clamp(0.75rem, 2vw, 1.25rem);
+  --gap-sm: clamp(0.5rem, 1.5vw, 0.9rem);
+
+  --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 14px 42px rgba(0, 0, 0, 0.35);
+}
+
+/* Sección base */
+.whyme {
+  position: relative;
+  color: var(--text);
+  background:
+    radial-gradient(900px 380px at 15% -10%, rgba(30, 203, 225, 0.10), transparent 60%),
+    radial-gradient(800px 320px at 85% 110%, rgba(11, 60, 93, 0.10), transparent 60%),
+    linear-gradient(180deg, rgba(2, 6, 23, 0.0), rgba(2, 6, 23, 0.25) 30%, rgba(2, 6, 23, 0.4));
+  padding: clamp(3rem, 6vw, 5rem) 1rem;
+}
+
+.whyme .container {
+  width: min(100% - 2rem, var(--container));
+  margin-inline: auto;
+  display: grid;
+  gap: var(--gap-xl);
+  text-align: center;
+}
+
+/* Título y subtítulo */
+.whyme-title {
+  font-size: var(--fz-title);
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  text-wrap: balance;
+}
+
+.whyme-subtitle {
+  font-size: var(--fz-sub);
+  color: var(--muted);
+  max-width: 70ch;
+  margin-inline: auto;
+  line-height: 1.65;
+  background: linear-gradient(180deg, rgba(30, 41, 59, 0.28), rgba(2, 6, 23, 0.18));
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  padding: 1rem 1.1rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(4px);
+}
+
+/* Lista de razones */
+.whyme-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  /* Grid adaptable: 2 columnas en desktop, 1 en móvil */
+  display: grid;
+  grid-template-columns: repeat(2, minmax(260px, 1fr));
+  gap: var(--gap-lg);
+}
+
+/* Item como “mini-card” */
+.whyme-list li {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: var(--gap-md);
+  text-align: left;
+
+  background: color-mix(in oklab, var(--bg) 80%, transparent);
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  border-radius: var(--radius);
+  padding: 1rem 1.1rem;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.2s ease, box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
+
+.whyme-list li:hover {
+  transform: translateY(-2px);
+  border-color: rgba(30, 203, 225, 0.28);
+  background: color-mix(in oklab, var(--bg) 86%, transparent);
+  box-shadow: var(--shadow-md);
+}
+
+.whyme-list li:focus-within {
+  outline: 2px solid transparent;
+  box-shadow:
+    0 0 0 3px rgba(2, 6, 23, 0.7),
+    0 0 0 6px var(--ring);
+}
+
+/* Icono (puro CSS) */
+.whyme-icon {
+  --s: 26px;                 /* tamaño base del ícono */
+  inline-size: var(--s);
+  block-size: var(--s);
+  border-radius: 8px;
+  display: inline-grid;
+  place-items: center;
+  background:
+    radial-gradient(closest-side, rgba(30, 203, 225, 0.18), transparent 70%),
+    linear-gradient(135deg, var(--secondary), #0EA5E9);
+  box-shadow: 0 6px 18px rgba(30, 203, 225, 0.35), inset 0 0 0 1px rgba(2, 6, 23, 0.4);
+  position: relative;
+  transform: translateY(1px);
+}
+
+/* Check glyph */
+.whyme-icon::before {
+  content: "";
+  width: 10px;
+  height: 6px;
+  border-left: 2.5px solid #0F172A;
+  border-bottom: 2.5px solid #0F172A;
+  transform: rotate(-45deg) translateY(-1px);
+  display: block;
+}
+
+/* Texto de cada razón */
+.whyme-list li {
+  font-size: var(--fz-item);
+  color: var(--text);
+  line-height: 1.55;
+}
+
+/* Estados de accesibilidad */
+.whyme a:focus,
+.whyme button:focus {
+  outline: none;
+}
+/* ===========================
+   WHY ME — Responsive Completo
+   =========================== */
+
+/* ---------- Tablets grandes (1024px - 768px) ---------- */
+@media (max-width: 1024px) {
+  .whyme {
+    padding: clamp(2.5rem, 5vw, 4rem) 1rem;
+  }
+
+  .whyme-title {
+    font-size: clamp(1.5rem, 2vw + 1.1rem, 1.8rem);
+  }
+
+  .whyme-subtitle {
+    font-size: clamp(0.95rem, 1vw + 0.9rem, 1rem);
+    padding: 0.9rem 1rem;
+    max-width: 65ch;
+  }
+
+  .whyme-list {
+    grid-template-columns: 1fr 1fr; /* sigue 2 columnas */
+    gap: var(--gap-md);
+  }
+
+  .whyme-list li {
+    padding: 0.9rem 1rem;
+    gap: var(--gap-md);
+  }
+}
+
+/* ---------- Tablets pequeñas / móviles grandes (767px - 480px) ---------- */
+@media (max-width: 767px) {
+  .whyme {
+    padding: clamp(2rem, 5vw, 3rem) 0.5rem;
+  }
+
+  .whyme-title {
+    font-size: clamp(1.4rem, 4vw + 1rem, 1.6rem);
+  }
+
+  .whyme-subtitle {
+    font-size: clamp(0.9rem, 3vw + 0.85rem, 0.95rem);
+    max-width: 55ch;
+    padding: 0.8rem 0.9rem;
+  }
+
+  .whyme-list {
+    grid-template-columns: 1fr; /* 1 columna en móviles */
+    gap: var(--gap-sm);
+  }
+
+  .whyme-list li {
+    grid-template-columns: auto 1fr;
+    padding: 0.85rem 0.95rem;
+    gap: var(--gap-md);
+  }
+
+  .whyme-icon {
+    inline-size: 24px;
+    block-size: 24px;
+  }
+}
+
+/* ---------- Móviles pequeños (<480px) ---------- */
+@media (max-width: 480px) {
+  .whyme {
+    padding: 1.5rem 0.5rem;
+  }
+
+  .whyme-title {
+    font-size: clamp(1.2rem, 5vw + 0.9rem, 1.4rem);
+  }
+
+  .whyme-subtitle {
+    font-size: clamp(0.85rem, 4vw + 0.8rem, 0.9rem);
+    max-width: 45ch;
+    padding: 0.75rem 0.85rem;
+  }
+
+  .whyme-list {
+    grid-template-columns: 1fr; /* 1 columna siempre */
+    gap: var(--gap-sm);
+  }
+
+  .whyme-list li {
+    grid-template-columns: auto 1fr;
+    gap: var(--gap-sm);
+    padding: 0.7rem 0.85rem;
+    font-size: clamp(0.82rem, 3.5vw + 0.8rem, 0.88rem);
+  }
+
+  .whyme-icon {
+    inline-size: 22px;
+    block-size: 22px;
+  }
+
+  .whyme-icon::before {
+    width: 9px;
+    height: 5px;
+    border-left-width: 2px;
+    border-bottom-width: 2px;
+  }
+}

@@ -1,0 +1,271 @@
+/* ===========================
+   FOOTER — Data/Tech Boosted + Responsive
+   =========================== */
+
+/* Variables (mueve a variables.css si ya tienes uno global) */
+:root {
+  --bg: #0F172A;          /* Fondo principal */
+  --bg-2: #0B1224;        /* Fondo profundo suave para el footer */
+  --surface: #1E293B;     /* Superficie / bordes */
+  --text: #E5E7EB;        /* Texto principal */
+  --muted: #94A3B8;       /* Texto secundario */
+  --muted-2: #9CA3AF;     /* Apoyo secundario suave */
+  --primary: #0B3C5D;     /* Azul profundo */
+  --secondary: #1ECBE1;   /* Cian eléctrico */
+  --accent: #2ECC71;      /* Verde data */
+  --ring: #1ECBE1;        /* Focus ring */
+
+  --container: 1120px;
+  --radius: 16px;
+  --radius-pill: 999px;
+
+  --fz-h: clamp(1.05rem, 0.7vw + 1rem, 1.2rem);
+  --fz-p: clamp(0.95rem, 0.4vw + 0.92rem, 1.05rem);
+  --fz-link: clamp(0.95rem, 0.3vw + 0.9rem, 1.05rem);
+
+  --gap-xl: clamp(1.8rem, 3vw, 2.2rem);
+  --gap-lg: clamp(1.2rem, 2.2vw, 1.8rem);
+  --gap-md: clamp(0.75rem, 2vw, 1.25rem);
+  --gap-sm: clamp(0.5rem, 1.2vw, 0.85rem);
+
+  --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.25);
+  --divider: 1px solid rgba(148, 163, 184, 0.14);
+}
+
+/* ---------- Base ---------- */
+.footer {
+  background:
+    radial-gradient(900px 350px at 80% -10%, rgba(30, 203, 225, 0.06), transparent 60%),
+    linear-gradient(180deg, rgba(2, 6, 23, 0.0), rgba(2, 6, 23, 0.35) 25%, rgba(11, 18, 36, 0.85));
+  border-top: var(--divider);
+  color: var(--text);
+}
+
+.footer .container {
+  width: min(100% - 2rem, var(--container));
+  margin-inline: auto;
+  padding-block: clamp(2rem, 4vw, 3rem);
+  display: grid;
+  gap: var(--gap-lg);
+  justify-items: center;
+  text-align: center;
+}
+
+/* Texto superior (nombre + propuesta) */
+.footer .container > p:first-of-type {
+  font-weight: 800;
+  font-size: var(--fz-h);
+  letter-spacing: 0.2px;
+  color: var(--text);
+}
+.footer .container > p:nth-of-type(2) {
+  color: var(--muted);
+  font-size: var(--fz-p);
+}
+
+/* ---------- Links internos ---------- */
+.footer-links {
+  display: grid;
+  grid-auto-flow: column;
+  gap: var(--gap-md);
+  align-items: center;
+}
+
+.footer-links a {
+  color: var(--muted);
+  font-weight: 600;
+  font-size: var(--fz-link);
+  text-decoration: none;
+  padding: 0.35rem 0.5rem;
+  border-radius: 10px;
+  transition: color 0.25s ease, background 0.25s ease, transform 0.2s ease;
+}
+.footer-links a:hover {
+  color: var(--secondary);
+  background: rgba(30, 203, 225, 0.08);
+}
+.footer-links a:focus-visible {
+  outline: 2px solid transparent;
+  box-shadow:
+    0 0 0 3px rgba(2, 6, 23, 0.7),
+    0 0 0 6px var(--ring);
+}
+
+/* ---------- Contacto directo y GitHub ---------- */
+.footer-contact {
+  display: grid;
+  grid-auto-flow: column;
+  gap: var(--gap-md);
+  align-items: center;
+}
+
+.footer-contact a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--text);
+  font-weight: 700;
+  text-decoration: none;
+  padding: 0.55rem 0.9rem;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  transition:
+    transform 0.2s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.footer-contact a svg {
+  font-size: 1.05rem; /* react-icons escala con font-size */
+  transform: translateY(1px);
+}
+
+.footer-contact a[href^="https://wa.me/"] {
+  background: rgba(37, 211, 102, 0.10);
+  color: #D5F7E3;
+  border-color: rgba(37, 211, 102, 0.25);
+}
+.footer-contact a[href^="https://wa.me/"]:hover {
+  background: rgba(37, 211, 102, 0.16);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-soft);
+}
+
+.footer-contact a[href^="mailto:"] {
+  background: rgba(30, 203, 225, 0.10);
+  color: var(--text);
+  border-color: rgba(30, 203, 225, 0.25);
+}
+.footer-contact a[href^="mailto:"]:hover {
+  background: rgba(30, 203, 225, 0.16);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-soft);
+}
+
+.footer-contact a[href*="github"] {
+  background: rgba(148, 163, 184, 0.08);
+  color: var(--text);
+  border-color: rgba(148, 163, 184, 0.18);
+}
+.footer-contact a[href*="github"]:hover {
+  background: rgba(148, 163, 184, 0.14);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-soft);
+}
+
+.footer-contact a[href*="andresmendez.tech"] {
+  background: rgba(14, 165, 233, 0.10);
+  color: #CDEBFA;
+  border-color: rgba(14, 165, 233, 0.28);
+}
+.footer-contact a[href*="andresmendez.tech"]:hover {
+  background: rgba(14, 165, 233, 0.16);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-soft);
+}
+
+.footer-contact a:focus-visible {
+  outline: 2px solid transparent;
+  box-shadow:
+    0 0 0 3px rgba(2, 6, 23, 0.7),
+    0 0 0 6px var(--ring);
+}
+
+/* ---------- Divider sutil antes del copyright ---------- */
+.footer .container > p:last-of-type {
+  width: 100%;
+  padding-top: var(--gap-md);
+  margin-top: var(--gap-md);
+  border-top: var(--divider);
+  color: var(--muted-2);
+  font-size: 0.95rem;
+}
+/* ===========================
+   FOOTER — Responsive Completo
+   =========================== */
+
+
+/* ---------- Responsive: Tablets (768px - 1024px) ---------- */
+@media (max-width: 1024px) {
+  .footer .container {
+    text-align: center;
+    gap: var(--gap-md);
+  }
+
+  .footer-links,
+  .footer-contact {
+    grid-auto-flow: row; /* Pasa los links a columna */
+    gap: var(--gap-sm);
+  }
+
+  .footer-links a,
+  .footer-contact a {
+    padding: 0.5rem 0.7rem;
+    font-size: clamp(0.9rem, 1vw + 0.9rem, 1rem);
+  }
+}
+
+/* ---------- Responsive: Tablets pequeñas / móviles grandes (480px - 767px) ---------- */
+@media (max-width: 767px) {
+  .footer .container {
+    padding-block: clamp(1.5rem, 3vw, 2rem);
+  }
+
+  .footer .container > p:first-of-type {
+    font-size: clamp(1rem, 3vw + 0.9rem, 1.1rem);
+  }
+
+  .footer-links,
+  .footer-contact {
+    grid-auto-flow: row;
+    gap: var(--gap-sm);
+    justify-items: center;
+  }
+
+  .footer-links a,
+  .footer-contact a {
+    width: 100%; /* Botones a toda la fila */
+    justify-content: center;
+    padding: 0.5rem 0;
+    font-size: clamp(0.85rem, 2.5vw + 0.85rem, 0.95rem);
+  }
+
+  .footer-contact a svg {
+    font-size: 0.95rem;
+  }
+}
+
+/* ---------- Responsive: Móviles pequeños (<480px) ---------- */
+@media (max-width: 480px) {
+  .footer .container {
+    padding-block: 1.5rem;
+    gap: var(--gap-sm);
+  }
+
+  .footer .container > p:first-of-type {
+    font-size: clamp(0.95rem, 4vw + 0.8rem, 1rem);
+  }
+
+  .footer .container > p:nth-of-type(2) {
+    font-size: clamp(0.85rem, 3.5vw + 0.8rem, 0.95rem);
+  }
+
+  .footer-links,
+  .footer-contact {
+    grid-auto-flow: row;
+    gap: var(--gap-sm);
+  }
+
+  .footer-links a,
+  .footer-contact a {
+    width: 100%;
+    font-size: clamp(0.8rem, 3vw + 0.8rem, 0.9rem);
+    padding: 0.45rem 0;
+  }
+
+  .footer-contact a svg {
+    font-size: 0.9rem;
+  }
+}
